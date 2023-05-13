@@ -1,0 +1,26 @@
+name: Run Airflow DAGs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    container:
+      image: atul7717/airflow:latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Airflow
+        run: |
+          airflow db init
+          airflow users create --username admin --password admin --firstname Admin --lastname Admin --role Admin --email tech@glabinnovation.com
+          airflow webserver -D &
+          airflow scheduler -D &
+          sleep 10
+          airflow dags trigger your_dag_id
