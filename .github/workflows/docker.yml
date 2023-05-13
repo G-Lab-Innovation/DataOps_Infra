@@ -26,17 +26,3 @@ jobs:
           file: ./docker/Dockerfile
           push: true
           tags: atul7717/airflow:latest
-          
-      - name: Pull and run Docker image
-        run: |
-          docker pull atul7717/airflow:latest
-          docker run -u root -d --name airflow_container atul7717/airflow:latest  
-
-      - name: Run Airflow
-        run: |
-          airflow db init
-          airflow users create --username admin --password admin --firstname Admin --lastname Admin --role Admin --email tech@glabinnovation.com
-          airflow webserver -D &
-          airflow scheduler -D &
-          sleep 10
-          airflow dags trigger your_dag_id    
