@@ -20,20 +20,5 @@ jobs:
         run: |
       
           docker pull atul7717/airflow:latest
-          docker run -u root -d --name airflow atul7717/airflow:latest  
-          
-      - name: Debug Airflow installation
-        run: |
-          docker exec airflow python -c "import sys; print(sys.path)"
-          docker exec airflow pip show apache-airflow
-    
-
-      - name: Run Airflow
-        run: |
-          docker exec airflow which airflow
-          docker exec airflow echo $PATH
-          docker exec airflow airflow db init
-          docker exec airflow airflow users create --username admin --password admin --firstname Admin --lastname Admin --role Admin --email tech@glabinnovation.com
-          docker exec airflow airflow webserver -D &
-          docker exec airflow airflow scheduler -D &
-          sleep 10
+          docker run -u root -d --name airflow atul7717/airflow:latest
+          docker run -it atul7717/airflow:latest /bin/bash
