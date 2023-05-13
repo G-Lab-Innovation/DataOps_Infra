@@ -8,5 +8,7 @@ ENV PATH="/home/airflow/.local/bin:${PATH}"
 COPY ./docker/requirements.txt /usr/src/app/
 RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
 
+RUN pip install apache-airflow
+
 # Copy the rest of your Airflow project
 COPY . /usr/src/app/
