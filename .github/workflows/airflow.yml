@@ -21,6 +21,12 @@ jobs:
       
           docker pull atul7717/airflow:latest
           docker run -u root -d --name airflow atul7717/airflow:latest  
+          
+      - name: Debug Airflow installation
+        run: |
+          docker exec airflow python -c "import sys; print(sys.path)"
+          docker exec airflow pip show apache-airflow
+    
 
       - name: Run Airflow
         run: |
