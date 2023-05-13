@@ -26,3 +26,8 @@ jobs:
         run: |
           docker exec airflow which airflow
           docker exec airflow echo $PATH
+          docker exec airflow airflow db init
+          docker exec airflow airflow users create --username admin --password admin --firstname Admin --lastname Admin --role Admin --email tech@glabinnovation.com
+          docker exec airflow airflow webserver -D &
+          docker exec airflow airflow scheduler -D &
+          sleep 10
