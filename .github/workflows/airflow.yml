@@ -25,7 +25,7 @@ jobs:
       - name: Pull and run Docker image
         run: |
           docker pull atul7717/airflow:latest
-          docker run -d --name airflow_container atul7717/airflow:latest  
+          docker run -u root -d --name airflow_container atul7717/airflow:latest  
 
       - name: Run Airflow
         run: |
