@@ -19,9 +19,6 @@ jobs:
       - name: Check current user
         run: whoami
         
-      - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v1  
-        
       - name: Pull and run Docker image
         run: |
           docker pull atul7717/airflow:latest
