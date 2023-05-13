@@ -21,4 +21,8 @@ jobs:
       
           docker pull atul7717/airflow:latest
           docker run -u root -d --name airflow atul7717/airflow:latest
-          docker run -it atul7717/airflow:latest /bin/bash
+
+
+      - name: Run command inside the container
+        run: |
+          docker exec airflow ls /usr/src/app
