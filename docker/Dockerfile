@@ -1,5 +1,5 @@
 # Use an official Airflow image as a parent image
-FROM apache/airflow:2.1.2
+FROM apache/airflow:2.1.2-python3.6
 
 # Set the PATH environment variable to include /home/airflow/.local/bin
 ENV PATH="/home/airflow/.local/bin:${PATH}"
