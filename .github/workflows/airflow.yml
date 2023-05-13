@@ -27,5 +27,6 @@ jobs:
         run: |
           docker exec airflow ls /usr/src/app
           docker exec airflow pip install --upgrade pip
+          docker exec airflow pip show airflow
           docker exec airflow pip list
 
