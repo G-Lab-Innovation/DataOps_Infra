@@ -26,3 +26,5 @@ jobs:
       - name: Run command inside the container
         run: |
           docker exec airflow ls /usr/src/app
+          docker exec airflow pip list
+
