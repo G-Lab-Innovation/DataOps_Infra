@@ -6,11 +6,8 @@ on:
       - main
 
 jobs:
-  test:
+  Airflow:
     runs-on: ubuntu-latest
-
-    container:
-      image: atul7717/airflow:latest
 
     steps:
       - name: Checkout code
