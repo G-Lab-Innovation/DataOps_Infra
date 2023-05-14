@@ -26,7 +26,7 @@ jobs:
       - name: Run command inside the container
         run: |
           docker exec airflow ls /usr/src/app
-          cd /usr/src/app
+          cd usr/src/app
           docker exec airflow pip install --upgrade pip
           docker exec airflow pip show apache-airflow
           docker exec airflow pip list
