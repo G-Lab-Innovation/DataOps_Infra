@@ -3,7 +3,6 @@ name: Run Airflow DAGs
 on:
   push:
     paths:
-      - 'dags/**'
     branches:
       - feature_dataops
 
