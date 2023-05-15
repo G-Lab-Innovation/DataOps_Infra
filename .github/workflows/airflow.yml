@@ -16,17 +16,9 @@ jobs:
       - name: Check current user
         run: whoami
         
-      - name: Pull and run Docker image
-        run: |
-      
-          docker pull atul7717/airflow:latest
-          docker run -u root -d --name airflow atul7717/airflow:latest
-
-
-      - name: Run command inside the container
-        run: |
-          docker exec airflow ls /usr/src/app
-          docker exec airflow pip install --upgrade pip
-          docker exec airflow pip show airflow
-          docker exec airflow pip list
-
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
