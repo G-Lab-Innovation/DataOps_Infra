@@ -25,7 +25,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
           
-      - name: Confirm Black code compliance fo DAGs
+      - name: Install AWS CLI
         run: |
-          pip install pytest-black==0.3.12
-          pytest Copy_data_Dag.py  -v
+          curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          sudo ./aws/install
+          
+      - name: Copy DAGs to S3
+        run: |
+          aws s3 cp dags s3://airflow-mwaa-bucket/dags/ --recursive
+          
