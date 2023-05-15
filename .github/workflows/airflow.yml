@@ -3,7 +3,7 @@ name: Run Airflow DAGs
 on:
   push:
     branches:
-      - main
+      - feature_dataops
 
 jobs:
   Airflow:
