@@ -21,7 +21,7 @@ jobs:
           export AIRFLOW_HOME=/home/ubuntu/airflow
           sudo whoami
           sudo su
-          sudo source /home/airflow_workspace/airflow_env/bin/activate
-          sudo airflow users list
-          sudo airflow version
-          sudo airflow dags trigger s3_copy_objects
+          source /home/airflow_workspace/airflow_env/bin/activate
+          airflow users list
+          airflow version
+          airflow dags trigger s3_copy_objects
