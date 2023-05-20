@@ -11,6 +11,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Copy DAGs to Airflow server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        source: "dags/Copy_data_Dag.py"
+        target: "/home/ubuntu/airflow/dags"
+
     - name: Trigger Airflow DAG
       uses: appleboy/ssh-action@master
       with:
@@ -18,9 +27,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          export AIRFLOW_HOME=/home/ubuntu/airflow
-          sudo whoami
-          sleep 2
+          export AIRFLOW_HOME=/root/airflow/
           sudo su
           source /home/airflow_workspace/airflow_env/bin/activate
           airflow users list
