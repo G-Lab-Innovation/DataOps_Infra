@@ -25,5 +25,3 @@ jobs:
           airflow users list
           airflow version
           airflow dags trigger s3_copy_objects
-    - name: Check current user
-        run: whomai   
