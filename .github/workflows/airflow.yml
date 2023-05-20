@@ -21,12 +21,12 @@ jobs:
         target: "/home/ubuntu/airflow/dags"
 
     - name: Trigger Airflow DAG
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
             export AIRFLOW_HOME=/home/ubuntu/airflow
             sudo whoami
             sleep 2
