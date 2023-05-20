@@ -20,6 +20,7 @@ jobs:
         script: |
           export AIRFLOW_HOME=/home/ubuntu/airflow
           sudo whoami
+          sleep 2
           sudo su
           source /home/airflow_workspace/airflow_env/bin/activate
           airflow users list
