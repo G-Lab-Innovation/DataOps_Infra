@@ -20,7 +20,6 @@ jobs:
         script: |
           whoami
           sudo su
-          export AIRFLOW_HOME=/root/airflow/
           source /home/airflow_workspace/airflow_env/bin/activate
           airflow users list
           airflow version
