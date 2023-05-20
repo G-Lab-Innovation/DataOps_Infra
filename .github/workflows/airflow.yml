@@ -18,7 +18,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          export AIRFLOW_HOME=/root/airflow/
+          export AIRFLOW_HOME=/home/ubuntu/airflow
           sudo whoami
           sudo su
           sudo source /home/airflow_workspace/airflow_env/bin/activate
