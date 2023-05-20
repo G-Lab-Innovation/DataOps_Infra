@@ -18,9 +18,12 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
+          export AIRFLOW_HOME=/root/airflow/
           whoami
           sudo su
           source /home/airflow_workspace/airflow_env/bin/activate
           airflow users list
           airflow version
           airflow dags trigger s3_copy_objects
+    - name: Check current user
+        run: whomai   
