@@ -25,11 +25,11 @@ with DAG(
 
     copy_files = S3CopyObjectOperator(
         task_id='copy_object',
+        aws_conn_id='my_aws',
         source_bucket_name='airflowtest-bucket-1',
         source_bucket_key='ds_salaries.csv',
         dest_bucket_name='airflow-test-bucket-2',
-        dest_bucket_key='ds_copy.csv',
-        aws_conn_id='aws_default'
+        dest_bucket_key='ds_copy.csv'
     )
 
     end = DummyOperator(task_id='end')
