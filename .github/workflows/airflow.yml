@@ -19,9 +19,9 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
           export AIRFLOW_HOME=/root/airflow/
-          whoami
+          sudo whoami
           sudo su
-          source /home/airflow_workspace/airflow_env/bin/activate
-          airflow users list
-          airflow version
-          airflow dags trigger s3_copy_objects
+          sudo source /home/airflow_workspace/airflow_env/bin/activate
+          sudo airflow users list
+          sudo airflow version
+          sudo airflow dags trigger s3_copy_objects
