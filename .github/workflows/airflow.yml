@@ -1,24 +1,19 @@
-name: Run Airflow DAGs
-
-on:
-  push:
-    branches:
-      - main
+name: Trigger Airflow DAG
+on: [push]
 
 jobs:
-  Airflow:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v1
-        
-      - name: Check current user
-        run: whoami
-        
-      - name: Set up AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Trigger Airflow DAG
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          export AIRFLOW_HOME=~/root/airflow/dags
+          airflow dags trigger s3_copy_objects
